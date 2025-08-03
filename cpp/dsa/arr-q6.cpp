@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//q6 left rotate by d places 
+
 void rev(int *arr, int low,int high){
     while(low<high){
         swap(arr[low],arr[high]);
@@ -31,6 +33,7 @@ int main() {
         cout<<i<<" ";
     }
         //OR
+    //tc=o(n) sc=o(n)
     int temp[d];
     for(int i=0;i<d;i++){
        temp[i]=arr[i];
