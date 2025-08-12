@@ -15,6 +15,5 @@ int main() {
         for(int i=0;i<height.size();i++){
             area=max(area,hmax*(x-i));
         }
-        cout<<area;
-
+        
     }
