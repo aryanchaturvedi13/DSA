@@ -148,7 +148,7 @@ node* del_mid(node* head, int k){
 node* del_val(node* head, int k){
     node* temp=head;
     while(temp->next!=head){
-        node* mover=temp;
+        node* mover=temp->next;
         if(mover->data==k){
             temp->next=mover->next;
             delete(mover);
@@ -156,14 +156,48 @@ node* del_val(node* head, int k){
         }
         temp=temp->next;
     }
+    node* mover=head;
+    temp->next=mover->next;
+    head=mover->next;
+    delete(mover);
     return head;
 }
 
+int search(node* head, int k){
+    node* temp=head;
+    int i=1;
+    while(temp->next!=head){
+        if(temp->data==k){
+            return i;
+        }
+        temp=temp->next;
+        i++;
+    }
+    int len=length(head);
+    return len;
+}
+
+node* merge(node* head1,node* head2){
+    node* temp1=head1;
+    while(temp1->next!=head1){
+        temp1=temp1->next;
+    }
+    temp1->next=head2;
+    node* temp2=head2;
+    while(temp2->next!=head2){
+        temp2=temp2->next;
+    }
+    temp2->next=head1;
+    return head1;
+}
 
 int main(){
     vector<int> arr={2,5,4,9,7,3};
-    node* head=new node(arr[0]);
-    head=convert(arr);
-    head=del_val(head,3);
+    vector<int> vec={3,7,8,4,5};
+    node* head1=new node(arr[0]);
+    head1=convert(arr);
+    node* head2=new node(vec[0]);
+    head2=convert(vec);
+    node* head=merge(head1,head2);
     print(head);
 }
