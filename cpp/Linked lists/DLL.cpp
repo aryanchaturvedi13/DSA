@@ -22,19 +22,15 @@ struct node{
 
 node* convert(vector<int> &arr){
     node* head=new node(arr[0]);
-    node* temp=head;
-    node* mover=head->next;
-    for(int i=0;i<arr.size();i++){
-        temp->data=arr[i];
-        mover->prev=temp;
-        temp->next=mover;
-        cout<<"hi";
-        temp=temp->next;
-        mover=mover->next;
+    node* prev=head;
+    node* curr=prev->next;
+    for(int i=1;i<arr.size();i++){
+        curr->data=arr[i];
+        
     }
-    return head;
-}
 
+
+}
 void print(node* head){
     node* temp=head;
     while(temp->next!=nullptr){

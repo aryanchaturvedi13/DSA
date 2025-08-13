@@ -152,8 +152,44 @@ node*merge(node* head1, node*head2){
 }
 
 node*rev(node*head){
+    node* curr=head;
+    node* nxt=nullptr;
+    node* prev=nullptr;
+    while(curr){
+        nxt=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=nxt;
+    }
+    head=prev;
+    return head;
+}
+
+
+node* sort(node* head){
+    // vector<int> st;
+    // node* temp=head;
+    // while(temp){
+    //     st.push_back(temp->data);
+    //     temp=temp->next;
+    // }
+    // sort(st.begin(),st.end());
+    // head=convert(st);
+    // return head;
+    node* prev=nullptr;
     node*temp=head;
-    
+    node* nxt=nullptr;
+    while(temp->next){
+        nxt=temp->next;
+        if(temp->data>nxt->data){
+            temp->next=nxt->next;
+            nxt->next=temp;
+            prev->next=nxt;
+        }
+            temp=temp->next;
+    }
+
+    return head;
 }
 
 int main(){
@@ -161,11 +197,6 @@ int main(){
     vector<int> vec={4,9,2,3,1};
     node*head1=convert(arr);
     node*head2=convert(vec);
-    // int k;
-    // int n;
-    // cin>>n;
-    // head=search(head,k);
-    // print(head);
-    node* head=merge(head1,head2);
-    print(head);
+    head1=sort(head1);
+    print(head1);
 }
