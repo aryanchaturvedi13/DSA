@@ -17,7 +17,7 @@ struct node{
     }
 };
 
-node* convert(vector<int> &arr){
+node* convert(vector<int> &arr){ //TC=O(n)
     node*head =new node(arr[0]);
     node*mover=head;
     for(int i=1;i<arr.size();i++){
@@ -28,7 +28,7 @@ node* convert(vector<int> &arr){
     return head; 
 }
 
-int length(node*head){
+int length(node*head){ //TC=O(n)
     node*temp=head;
     int cnt=1;
     while(temp->next!=nullptr){
@@ -38,12 +38,12 @@ int length(node*head){
     return cnt;
 }
 
-bool isempty(node* head){
+bool isempty(node* head){ //TC=O(1)
     if(head==nullptr) return 1;
     else return 0;
 }
 
-int max_el(node* head){
+int max_el(node* head){ //TC=O(n)
     node* temp=head;
     int el=0;
     while(temp){
@@ -53,14 +53,14 @@ int max_el(node* head){
     return el;
 }
 
-node* insert_beg(node* head,int k){
+node* insert_beg(node* head,int k){ //TC=O(1)
     node*add=new node(k);
     add->next=head;
     head =add;
     return head;
 }
 
-node* insert_end(node*head,int k){
+node* insert_end(node*head,int k){ //TC=O(n)
     node* add=new node(k);
     node*temp=head;
     while(temp->next!=nullptr){
@@ -70,7 +70,7 @@ node* insert_end(node*head,int k){
     return head;
 }
 
-node* insert_pos(node*head, int k, int n){
+node* insert_pos(node*head, int k, int n){ //TC=O(n) worst case
     int len=length(head);
     if(k>len) return nullptr;
     node*add=new node(k);
@@ -85,7 +85,7 @@ node* insert_pos(node*head, int k, int n){
     return head;
 }
 
-void print(node*head){
+void print(node*head){ //TC=O(n)
     node*temp=head;
     while(temp!=nullptr){
         cout<<temp->data<<" ";
@@ -94,7 +94,7 @@ void print(node*head){
     cout<<endl;
 }
 
-node*del_beg(node*head){
+node*del_beg(node*head){ //TC=O(1)
     if(head==NULL) return nullptr; 
     node*temp=head;
     head=head->next;
@@ -102,7 +102,7 @@ node*del_beg(node*head){
     return head;
 }
 
-node*del_end(node*head){
+node*del_end(node*head){ //TC=O(n)
     if(head==nullptr) return nullptr;
     node*temp=head;
     while((temp->next)->next!=nullptr){
@@ -113,7 +113,7 @@ node*del_end(node*head){
     return head;
 }
 
-node*del_pos(node*head, int n){
+node*del_pos(node*head, int n){ //TC=O(n) worst case
     int len=length(head);
     if(n>len) return head;
     node*temp=head;
@@ -129,7 +129,7 @@ node*del_pos(node*head, int n){
     return head;
 }
 
-node*del_ifex(node* head, int n){
+node*del_ifex(node* head, int n){ //TC=O(n)
     node*temp=head;
     node*mover=temp->next;
     while(temp->next!=nullptr){
@@ -144,7 +144,7 @@ node*del_ifex(node* head, int n){
     return head;
 }
 
-node*search(node*head, int n){
+node*search(node*head, int n){ //TC=o(n)
     node*temp=head;
     int i=1;
     while(temp->next!=nullptr){
@@ -157,7 +157,7 @@ node*search(node*head, int n){
     return head;
 }
 
-node*merge(node* head1, node*head2){
+node*merge(node* head1, node*head2){ //TC=O(n)
     node*temp=head1;
     while(temp->next!=nullptr){
         temp=temp->next;
@@ -166,7 +166,7 @@ node*merge(node* head1, node*head2){
     return head1;
 }
 
-node*rev(node*head){
+node*rev(node*head){ //TC=O(n)
     node* curr=head;
     node* nxt=nullptr;
     node* prev=nullptr;
@@ -180,7 +180,7 @@ node*rev(node*head){
     return head;
 }
 
-node* sort(node* head){
+node* sort(node* head){ //TC=O(n square)
     node* temp=head;
     while(temp){
         node*mover=temp;
