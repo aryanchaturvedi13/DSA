@@ -52,6 +52,11 @@ int length(node* head){
     return len;
 }
 
+bool isempty(node* head){
+    if(head==nullptr) return 1;
+    else return 0;
+}
+
 node* del_head(node * head){
     if(head==nullptr)return nullptr;
     node * temp=head;
@@ -62,7 +67,7 @@ node* del_head(node * head){
 }
 
 node * del_tail(node* head){
-    if(head==nullptr||head->next==nullptr) return nullptr;
+    if(head==nullptr||head->next==nullptr) return head;
     node* temp=head;
     node* mover=temp->next;
     while((temp->next)->next!=nullptr){
@@ -168,6 +173,35 @@ node* merge(node* head1, node* head2){
     return head1;
 }
 
+node* sort(node* head){
+    node* temp=head;
+    while(temp){
+        node*mover=temp;
+        while(mover){
+            if(mover->data<temp->data){
+                int x=0;
+                x=mover->data;
+                mover->data=temp->data;
+                temp->data=x;
+            }
+            mover=mover->next;
+        }
+        temp=temp->next;
+    }
+    return head;
+}
+
+void print_rev(node* head){
+    node* temp=head;
+    while(temp->next!=nullptr){
+        temp=temp->next;
+    }
+    while(temp!=nullptr){
+        cout<<temp->data<<" ";
+        temp=temp->back;
+    }
+}
+
 int main() {
     vector<int> arr={6,8,2,4,1,5,3};
     vector<int> vec{9,5,4,2,3};
@@ -179,5 +213,8 @@ int main() {
     // cin>>k;
     // int n;
     // cin>>n;
-    print(head1);
+    // head1=sort(head1);
+    // head2=sort(head2);
+    // print(head1);
+    print_rev(head2);
 }

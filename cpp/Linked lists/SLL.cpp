@@ -38,6 +38,21 @@ int length(node*head){
     return cnt;
 }
 
+bool isempty(node* head){
+    if(head==nullptr) return 1;
+    else return 0;
+}
+
+int max_el(node* head){
+    node* temp=head;
+    int el=0;
+    while(temp){
+        el=max(el,temp->data);
+        temp=temp->next;
+    }
+    return el;
+}
+
 node* insert_beg(node* head,int k){
     node*add=new node(k);
     add->next=head;
@@ -165,32 +180,24 @@ node*rev(node*head){
     return head;
 }
 
-
 node* sort(node* head){
-    // vector<int> st;
-    // node* temp=head;
-    // while(temp){
-    //     st.push_back(temp->data);
-    //     temp=temp->next;
-    // }
-    // sort(st.begin(),st.end());
-    // head=convert(st);
-    // return head;
-    node* prev=nullptr;
-    node*temp=head;
-    node* nxt=nullptr;
-    while(temp->next){
-        nxt=temp->next;
-        if(temp->data>nxt->data){
-            temp->next=nxt->next;
-            nxt->next=temp;
-            prev->next=nxt;
+    node* temp=head;
+    while(temp){
+        node*mover=temp;
+        while(mover){
+            if(mover->data<temp->data){
+                int x=0;
+                x=mover->data;
+                mover->data=temp->data;
+                temp->data=x;
+            }
+            mover=mover->next;
         }
-            temp=temp->next;
+        temp=temp->next;
     }
-
     return head;
 }
+
 
 int main(){
     vector<int> arr={5,3,4,8,9,4,1};
@@ -198,5 +205,8 @@ int main(){
     node*head1=convert(arr);
     node*head2=convert(vec);
     head1=sort(head1);
+    head2=sort(head2);
     print(head1);
+    print(head2);
+    // cout<<max_el(head1);
 }

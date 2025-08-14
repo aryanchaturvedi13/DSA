@@ -191,13 +191,36 @@ node* merge(node* head1,node* head2){
     return head1;
 }
 
+node* sort(node* head){
+    node* tail=head;
+    while(tail->next!=head){
+        tail=tail->next;
+    }
+    node* temp=head;
+    while(temp->next!=tail->next){
+        node* mover=temp;
+        while(mover!=tail->next){
+            if(mover->data<temp->data){
+                int x=0;
+                x=mover->data;
+                mover->data=temp->data;
+                temp->data=x;
+            }
+            mover=mover->next;
+        }
+        temp=temp->next;
+    }
+    return head;
+}
+
 int main(){
-    vector<int> arr={2,5,4,9,7,3};
+    vector<int> arr={5,2,4,9,7,3};
     vector<int> vec={3,7,8,4,5};
     node* head1=new node(arr[0]);
     head1=convert(arr);
     node* head2=new node(vec[0]);
     head2=convert(vec);
-    node* head=merge(head1,head2);
-    print(head);
+    // node* head=merge(head1,head2);
+    head1=sort(head1);
+    print(head1);
 }
