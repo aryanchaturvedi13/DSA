@@ -113,6 +113,7 @@ node* del_beg(node* head){ //TC=O(1)
     temp->back=nullptr;
     temp->next=nullptr;
     delete(temp);
+    temp=nullptr;
     return head;
 }
 
@@ -121,6 +122,7 @@ node* del_end(node* head){ //TC=O(1)
     (temp->back)->next=head;
     head->back=(temp->back);
     delete temp;
+    temp=nullptr;
     return head;
 }
 
@@ -144,6 +146,7 @@ node* del_mid(node* head, int k){ //TC=O(n-1)
     (temp->back)->next=temp->next;
     (temp->next)->back=temp->back;
     delete temp;
+    temp=nullptr;
     return head;
 }
 
@@ -158,6 +161,7 @@ node* del_val(node* head, int k){//TC=O(n)
             (temp->back)->next=temp->next;
             (temp->next)->back=temp->back;
             delete temp;
+            temp=nullptr;
             return head;
         }
         temp=temp->next;

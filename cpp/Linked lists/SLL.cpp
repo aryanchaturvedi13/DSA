@@ -99,6 +99,7 @@ node*del_beg(node*head){ //TC=O(1)
     node*temp=head;
     head=head->next;
     delete temp;
+    temp=nullptr;
     return head;
 }
 
@@ -113,7 +114,7 @@ node*del_end(node*head){ //TC=O(n)
     return head;
 }
 
-node*del_pos(node*head, int n){ //TC=O(n) worst case
+node*del_mid(node*head, int n){ //TC=O(n) worst case
     int len=length(head);
     if(n>len) return head;
     node*temp=head;
@@ -126,16 +127,18 @@ node*del_pos(node*head, int n){ //TC=O(n) worst case
     }
     temp->next=mover->next;
     delete mover;
+    mover=nullptr;
     return head;
 }
 
-node*del_ifex(node* head, int n){ //TC=O(n)
+node*del_val(node* head, int n){ //TC=O(n)
     node*temp=head;
     node*mover=temp->next;
     while(temp->next!=nullptr){
         if((temp->next)->data==n){
             temp->next=(temp->next)->next;
             delete mover;
+            mover=nullptr;
             return head;
         }
         temp=temp->next;
