@@ -170,12 +170,13 @@ node*merge(node* head1, node*head2){ //TC=O(n)
 }
 
 node*rev(node*head){ //TC=O(n)
+    if(head==nullptr||head->next==nullptr) return head;
     node* curr=head;
     node* nxt=nullptr;
     node* prev=nullptr;
     while(curr){
         nxt=curr->next;
-        curr->next=prev;
+        prev->next=curr;
         prev=curr;
         curr=nxt;
     }
