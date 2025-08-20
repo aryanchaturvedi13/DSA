@@ -30,12 +30,17 @@ node* convert(vector<int> &arr){ //TC=O(n)
 
 int length(node*head){ //TC=O(n)
     node*temp=head;
-    int cnt=1;
-    while(temp->next!=nullptr){
-        cnt++;
-        temp=temp->next;
-    }
-    return cnt;
+    // int cnt=1;
+    // while(temp->next!=nullptr){
+    //     cnt++;
+    //     temp=temp->next;
+    // }
+    int len=0;
+        while(temp){
+            temp=temp->next;
+            len++;
+        }
+    return len;
 }
 
 bool isempty(node* head){ //TC=O(1)
@@ -207,10 +212,11 @@ int main(){
     vector<int> arr={5,3,4,8,9,4,1};
     vector<int> vec={4,9,2,3,1};
     node*head1=convert(arr);
-    node*head2=convert(vec);
-    head1=sort(head1);
-    head2=sort(head2);
-    print(head1);
-    print(head2);
+    // node*head2=convert(vec);
+    // head1=sort(head1);
+    // head2=sort(head2);
+    // print(head1);
+    // print(head2);
     // cout<<max_el(head1);
+    cout<<length(head1);
 }
