@@ -4,34 +4,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+template<typename T>
 struct node {
-    int data;
+    T data;
     node* next;
 
-    node(int data1, node* next1) {
+    node(T data1, node* next1) {
         data = data1;
         next = next1;
     }
 
-    node(int data1) {
+    node(T data1) {
         data = data1;
         next = nullptr;
     }
 };
 
-inline node* convert(vector<int> &arr) { 
-    node* head = new node(arr[0]);
-    node* mover = head;
+template<typename T>
+inline node<T>* convert(vector<T> &arr) { 
+    node<T>* head = new node<T>(arr[0]);
+    node<T>* mover = head;
     for (int i = 1; i < arr.size(); i++) {
-        node* temp = new node(arr[i]);
+        node<T>* temp = new node<T>(arr[i]);
         mover->next = temp;
         mover = temp;
     }
     return head; 
 }
 
-inline int length(node* head) { 
-    node* temp = head;
+template<typename T>
+inline int length(node<T>* head) { 
+    node<T>* temp = head;
     int cnt = 0;
     while (temp != nullptr) {
         cnt++;
@@ -40,13 +43,15 @@ inline int length(node* head) {
     return cnt;
 }
 
-inline bool isempty(node* head) { 
+template<typename T>
+inline bool isempty(node<T>* head) { 
     return head == nullptr;
 }
 
-inline int max_el(node* head) { 
-    node* temp = head;
-    int el = INT_MIN;
+template<typename T>
+inline T max_el(node<T>* head) { 
+    node<T>* temp = head;
+    T el = temp->data; // assume head exists
     while (temp) {
         el = max(el, temp->data);
         temp = temp->next;
@@ -54,15 +59,17 @@ inline int max_el(node* head) {
     return el;
 }
 
-inline node* insert_beg(node* head, int k) { 
-    node* add = new node(k);
+template<typename T>
+inline node<T>* insert_beg(node<T>* head, T k) { 
+    node<T>* add = new node<T>(k);
     add->next = head;
     return add;
 }
 
-inline node* insert_end(node* head, int k) { 
-    node* add = new node(k);
-    node* temp = head;
+template<typename T>
+inline node<T>* insert_end(node<T>* head, T k) { 
+    node<T>* add = new node<T>(k);
+    node<T>* temp = head;
     while (temp->next != nullptr) {
         temp = temp->next;
     }
@@ -70,12 +77,13 @@ inline node* insert_end(node* head, int k) {
     return head;
 }
 
-inline node* insert_pos(node* head, int k, int n) { 
+template<typename T>
+inline node<T>* insert_pos(node<T>* head, T k, int n) { 
     int len = length(head);
     if (n > len) return nullptr;
-    node* add = new node(k);
+    node<T>* add = new node<T>(k);
     int i = 1;
-    node* temp = head;
+    node<T>* temp = head;
     while (i < n - 1) {
         temp = temp->next;
         i++;
@@ -85,8 +93,9 @@ inline node* insert_pos(node* head, int k, int n) {
     return head;
 }
 
-inline void print(node* head) { 
-    node* temp = head;
+template<typename T>
+inline void print(node<T>* head) { 
+    node<T>* temp = head;
     while (temp != nullptr) {
         cout << temp->data << " ";
         temp = temp->next;
@@ -94,17 +103,19 @@ inline void print(node* head) {
     cout << endl;
 }
 
-inline node* del_beg(node* head) { 
+template<typename T>
+inline node<T>* del_beg(node<T>* head) { 
     if (head == nullptr) return nullptr; 
-    node* temp = head;
+    node<T>* temp = head;
     head = head->next;
     delete temp;
     return head;
 }
 
-inline node* del_end(node* head) { 
+template<typename T>
+inline node<T>* del_end(node<T>* head) { 
     if (head == nullptr) return nullptr;
-    node* temp = head;
+    node<T>* temp = head;
     while ((temp->next)->next != nullptr) {
         temp = temp->next;
     }
@@ -113,11 +124,12 @@ inline node* del_end(node* head) {
     return head;
 }
 
-inline node* del_mid(node* head, int n) { 
+template<typename T>
+inline node<T>* del_mid(node<T>* head, int n) { 
     int len = length(head);
     if (n > len) return head;
-    node* temp = head;
-    node* mover = temp->next;
+    node<T>* temp = head;
+    node<T>* mover = temp->next;
     int i = 1;
     while (i < n - 1) {
         temp = temp->next;
@@ -129,9 +141,10 @@ inline node* del_mid(node* head, int n) {
     return head;
 }
 
-inline node* del_val(node* head, int n) { 
-    node* temp = head;
-    node* mover = temp->next;
+template<typename T>
+inline node<T>* del_val(node<T>* head, T n) { 
+    node<T>* temp = head;
+    node<T>* mover = temp->next;
     while (temp->next != nullptr) {
         if ((temp->next)->data == n) {
             temp->next = (temp->next)->next;
@@ -144,8 +157,9 @@ inline node* del_val(node* head, int n) {
     return head;
 }
 
-inline node* search(node* head, int n) { 
-    node* temp = head;
+template<typename T>
+inline node<T>* search(node<T>* head, T n) { 
+    node<T>* temp = head;
     int i = 1;
     while (temp != nullptr) {
         if (temp->data == n) {
@@ -157,8 +171,9 @@ inline node* search(node* head, int n) {
     return head;
 }
 
-inline node* merge(node* head1, node* head2) { 
-    node* temp = head1;
+template<typename T>
+inline node<T>* merge(node<T>* head1, node<T>* head2) { 
+    node<T>* temp = head1;
     while (temp->next != nullptr) {
         temp = temp->next;
     }
@@ -166,11 +181,12 @@ inline node* merge(node* head1, node* head2) {
     return head1;
 }
 
-inline node* rev(node* head) { 
+template<typename T>
+inline node<T>* rev(node<T>* head) { 
     if (head == nullptr || head->next == nullptr) return head;
-    node* curr = head;
-    node* nxt = nullptr;
-    node* prev = nullptr;
+    node<T>* curr = head;
+    node<T>* nxt = nullptr;
+    node<T>* prev = nullptr;
     while (curr) {
         nxt = curr->next;
         curr->next = prev;
@@ -180,10 +196,11 @@ inline node* rev(node* head) {
     return prev;
 }
 
-inline node* sort(node* head) { 
-    node* temp = head;
+template<typename T>
+inline node<T>* sort(node<T>* head) { 
+    node<T>* temp = head;
     while (temp) {
-        node* mover = temp;
+        node<T>* mover = temp;
         while (mover) {
             if (mover->data < temp->data) {
                 swap(mover->data, temp->data);
