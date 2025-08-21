@@ -17,19 +17,23 @@ public:
         cout<<endl;
         head=rev(head);
     }
+   
     bool isempty(){
         if(head==nullptr) return 1;
         else return 0;
     }
+   
     void push(T x){
         node<T>* temp=new node<T>(x);
         high->next=temp;
         high=high->next;
     }
+  
     T top(){
         if(head==nullptr) return 0;
         return high->data;
     }
+   
     T size(){
         if(head==nullptr) return 0;
         node<T>* temp=head;
@@ -40,6 +44,7 @@ public:
         }
         return i;
     }
+   
     void pop(){
         node<T>* temp=head;
         while(temp->next){
@@ -49,5 +54,15 @@ public:
         high=temp;
         delete mover;
         mover=nullptr;
+    }
+
+    bool ispalin(){
+        node<T>* temp1=head;
+        node<T>* temp2=head;
+        temp1=rev(head);
+        while(temp1 && temp2){
+            if(temp1->data!=temp2->data) return false;
+        }
+        return true;
     }
 };
