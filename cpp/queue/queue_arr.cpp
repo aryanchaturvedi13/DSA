@@ -5,6 +5,7 @@ class qImptl{
     int q[15];
     int size=0;
     int head=0;
+    int end=14;
     int length(){
         return size;
     }
@@ -14,6 +15,7 @@ public:
             cout<<"array full";
             return;
         }
+        
         q[size]=k;
         size++;
     }
@@ -40,7 +42,6 @@ public:
         if(size==15) return true;
     }
 };
-
 
 
 int main(){
