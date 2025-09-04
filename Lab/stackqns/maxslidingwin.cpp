@@ -14,7 +14,6 @@ vector<int> maxOfSubarrays(vector<int>& arr, int k) {
     }
 
     for (int i = k; i < arr.size(); i++) {
-      
         res.push_back(arr[dq.front()]);
         while (!dq.empty() && dq.front() <= i - k) {
             dq.pop_front();
