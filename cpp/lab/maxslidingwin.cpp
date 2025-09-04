@@ -6,14 +6,14 @@ vector<int> maxOfSubarrays(vector<int>& arr, int k) {
     vector<int> res;  
     deque<int> dq(k);
 
-    for (int i = 0; i < k; ++i) {
+    for (int i = 0; i < k; i++) {
         while (!dq.empty() && arr[i] >= arr[dq.back()]) {          
             dq.pop_back();
         }
         dq.push_back(i);
     }
 
-    for (int i = k; i < arr.size(); ++i) {
+    for (int i = k; i < arr.size(); i++) {
       
         res.push_back(arr[dq.front()]);
         while (!dq.empty() && dq.front() <= i - k) {
@@ -31,7 +31,7 @@ vector<int> maxOfSubarrays(vector<int>& arr, int k) {
 }
 
 int main() {
-    vector<int> arr = {1, 3, 2, 1, 7, 3};
+    vector<int> arr = {1, 3, 2, 1, 7, 8};
     int k = 3;
     vector<int> res = maxOfSubarrays(arr, k);
     for (int maxVal : res) {
