@@ -170,7 +170,7 @@ int evalPostfix(string s,map<char,int> &val) {
             if(i=='+') st.push(a+b);
             else if(i=='-')  st.push(a-b);
             else if(i=='*') st.push(a*b);
-            else if(i=='/') st.push(a/b);.
+            else if(i=='/') st.push(a/b);
             else st.push(pow(a,b));
         }
     }

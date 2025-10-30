@@ -177,16 +177,15 @@ node*merge(node* head1, node*head2){ //TC=O(n)
 node*rev(node*head){ //TC=O(n)
     if(head==nullptr||head->next==nullptr) return head;
     node* curr=head;
-    node* nxt=nullptr;
     node* prev=nullptr;
-    while(curr){
+    node* nxt=nullptr;
+    while(curr!=nullptr){
         nxt=curr->next;
-        prev->next=curr;
+        curr->next=prev;
         prev=curr;
         curr=nxt;
     }
-    head=prev;
-    return head;
+    return prev;
 }
 
 node* sort(node* head){ //TC=O(n square)
@@ -218,5 +217,7 @@ int main(){
     // print(head1);
     // print(head2);
     // cout<<max_el(head1);
-    cout<<length(head1);
+    // cout<<length(head1);
+    head1=rev(head1);
+    print(head1);
 }

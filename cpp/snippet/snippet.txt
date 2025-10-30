@@ -1,0 +1,42 @@
+"": {
+  "prefix": "preorderRecursive",
+  "body": [
+    "void preorder(Node* root, vector<int> &arr){",
+    "    if(root == nullptr){",
+    "        return;",
+    "    }",
+    "    arr.push_back(root->data);",
+    "    preorder(root->left, arr);",
+    "    preorder(root->right, arr);",
+    "}",
+    "",
+    "vector<int> preOrder(Node* root){",
+    "    vector<int> arr;",
+    "    preorder(root, arr);",
+    "    return arr;",
+    "}",
+    ""
+  ],
+  "description": ""
+}
+
+"": {
+  "prefix": "inorderRecursive",
+  "body": [
+    "void inorder(Node* root, vector<int> &arr){",
+    "    if(root == nullptr){",
+    "        return;",
+    "    }",
+    "    inorder(root->left, arr);",
+    "    arr.push_back(root->data);",
+    "    inorder(root->right, arr);",
+    "}",
+    "",
+    "vector<int> inOrder(Node* root){",
+    "    vector<int> arr;",
+    "    inorder(root, arr);",
+    "    return arr;",
+    "}"
+  ],
+  "description": ""
+}
